@@ -5,3 +5,10 @@ netty:
   default:
     allocator:
       max-order: 3
+gym:
+  username: ${GYM_USERNAME:}
+  pin: ${GYM_PIN:}
+  url:
+    member: ${GYM_MEMBER_API_URL}
+    api: ${GYM_API_URL}
+    login: ${LOGIN_API_URL}

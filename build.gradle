@@ -21,6 +21,11 @@ dependencies {
     implementation('net.lecousin.reactive-data-relational:postgres:0.8.0')
     implementation('studio.crud.feature:flyway:0.3.0')
     implementation('org.projectlombok:lombok:1.18.22')
+    annotationProcessor('org.projectlombok:lombok:1.18.22')
+    implementation('javax.inject:javax.inject:1')
+    implementation("io.micronaut.rxjava2:micronaut-rxjava2")
+    implementation("io.micronaut.rxjava2:micronaut-rxjava2-http-client")
+    implementation("io.micronaut.rxjava2:micronaut-rxjava2-http-server-netty")
 }
 
 

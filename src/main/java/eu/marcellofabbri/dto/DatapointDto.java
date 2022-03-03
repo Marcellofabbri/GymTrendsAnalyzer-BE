@@ -1,13 +1,14 @@
 package eu.marcellofabbri.dto;
 
+import io.micronaut.core.annotation.Introspected;
 import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
+@Introspected
 public class DatapointDto {
 
-  int peopleAtTheGym;
-  int peopleInClasses;
-  LocalDateTime when;
-  String where;
+  int totalPeopleInGym;
+  int totalPeopleInClasses;
+  LocalDateTime attendanceTime;
 }
