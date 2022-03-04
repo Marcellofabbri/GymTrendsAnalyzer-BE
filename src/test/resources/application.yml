@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: gymTrendsAnalyzer
+netty:
+  default:
+    allocator:
+      max-order: 3
+gym:
+  username: username
+  pin: 12345
+  url:
+    member: https://member.api.url
+    api: https://gym.api.url
+    login: https://login.api.url
