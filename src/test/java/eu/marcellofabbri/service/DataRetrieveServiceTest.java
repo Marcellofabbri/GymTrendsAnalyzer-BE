@@ -3,7 +3,9 @@ package eu.marcellofabbri.service;
 import static io.micronaut.http.HttpHeaders.ACCEPT;
 import static io.micronaut.http.HttpHeaders.AUTHORIZATION;
 import static io.micronaut.http.HttpHeaders.USER_AGENT;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.mock;
 import eu.marcellofabbri.config.GymConfiguration;
 import eu.marcellofabbri.dto.DatapointDto;
@@ -46,14 +48,14 @@ public class DataRetrieveServiceTest {
 
     Flowable<DatapointDto> expected = Flowable.just(datapointDto);
 
-    Mockito.when(httpClientMock.retrieve(any(HttpRequest.class), any(Class.class))).thenReturn(expected);
+    when(httpClientMock.retrieve(any(HttpRequest.class), any(Class.class))).thenReturn(expected);
 
-    Assertions.assertEquals(expected, service.fetchDatapoint(token));
+    assertEquals(expected, service.fetchDatapoint(token));
     ArgumentCaptor<HttpRequest> requestCaptor = ArgumentCaptor.forClass(HttpRequest.class);
     ArgumentCaptor<Class> classCaptor = ArgumentCaptor.forClass(Class.class);
-    Mockito.verify(httpClientMock, Mockito.times(1)).retrieve(requestCaptor.capture(), classCaptor.capture());
-    Assertions.assertEquals(token, requestCaptor.getValue().getHeaders().get(AUTHORIZATION));
-    Assertions.assertEquals(DatapointDto.class, classCaptor.getValue());
+    verify(httpClientMock, times(1)).retrieve(requestCaptor.capture(), classCaptor.capture());
+    assertEquals(token, requestCaptor.getValue().getHeaders().get(AUTHORIZATION));
+    assertEquals(DatapointDto.class, classCaptor.getValue());
   }
 
 }

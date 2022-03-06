@@ -7,6 +7,7 @@ import eu.marcellofabbri.service.DataRetrieveService;
 import eu.marcellofabbri.service.LoginService;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.reactivex.Flowable;
 import java.util.Map;
 
 @Controller("/")
@@ -23,10 +24,10 @@ public class GymController {
   }
 
   @Get("/datapoint")
-  DatapointDto getDatapoint() throws JsonProcessingException {
+  Flowable<DatapointDto> getDatapoint() throws JsonProcessingException {
     String tokenResponse = loginService.login().blockingFirst().body();
-    Map<String, String> response = mapper.readValue(tokenResponse, Map.class);
+    Map response = mapper.readValue(tokenResponse, Map.class);
     String token = "Bearer " + response.get("access_token");
-    return dataRetrieveService.fetchDatapoint(token).blockingSingle();
+    return dataRetrieveService.fetchDatapoint(token);
   }
 }

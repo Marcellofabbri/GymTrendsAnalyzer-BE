@@ -25,7 +25,6 @@ public class LoginService {
   private GymConfiguration configuration;
 
   public LoginService(
-      GymConfiguration configuration,
       @Client("${gym.url.login}") RxHttpClient httpClient,
       @Value("${gym.username}") String username,
       @Value("${gym.pin}") String pin) {
