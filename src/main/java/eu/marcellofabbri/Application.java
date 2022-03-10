@@ -1,13 +1,11 @@
 package eu.marcellofabbri;
 
-import eu.marcellofabbri.job.DatapointRetrievalJobProcess;
 import io.micronaut.runtime.Micronaut;
+import org.quartz.SchedulerException;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SchedulerException {
         Micronaut.run(Application.class, args);
-
-        DatapointRetrievalJobProcess.start();
     }
 }
