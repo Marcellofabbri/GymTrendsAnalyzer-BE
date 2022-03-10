@@ -24,7 +24,7 @@ public class GymController {
   }
 
   @Get("/datapoint")
-  Flowable<DatapointDto> getDatapoint() throws JsonProcessingException {
+  public Flowable<DatapointDto> getDatapoint() throws JsonProcessingException {
     String tokenResponse = loginService.login().blockingFirst().body();
     Map response = mapper.readValue(tokenResponse, Map.class);
     String token = "Bearer " + response.get("access_token");

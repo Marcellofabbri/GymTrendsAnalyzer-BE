@@ -27,6 +27,8 @@ dependencies {
     implementation("io.micronaut.rxjava2:micronaut-rxjava2-http-client")
     implementation("io.micronaut.rxjava2:micronaut-rxjava2-http-server-netty")
     testImplementation('org.mockito:mockito-all:1.10.19')
+    implementation('org.quartz-scheduler:quartz:2.3.2')
+
 }
 
 

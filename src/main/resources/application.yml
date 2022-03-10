@@ -12,3 +12,13 @@ gym:
     member: ${GYM_MEMBER_API_URL}
     api: ${GYM_API_URL}
     login: ${LOGIN_API_URL}
+
+cron:
+  hourly: 0 0/10 * * * ?
+
+app:
+  server:
+    name: ${SERVER_NAME:localhost}
+    port: ${SERVER_PORT:8080}
+  service:
+    url: ${SERVER_URL:http://${app:server:name}:${app.server.port}/}
