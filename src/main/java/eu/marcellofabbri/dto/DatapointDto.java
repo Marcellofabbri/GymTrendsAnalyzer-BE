@@ -3,8 +3,9 @@ package eu.marcellofabbri.dto;
 import io.micronaut.core.annotation.Introspected;
 import java.time.LocalDateTime;
 import lombok.Data;
+import lombok.Value;
 
-@Data
+@Value
 @Introspected
 public class DatapointDto {
 

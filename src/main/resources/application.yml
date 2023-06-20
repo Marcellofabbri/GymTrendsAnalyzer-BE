@@ -6,12 +6,12 @@ netty:
     allocator:
       max-order: 3
 gym:
-  username: ${GYM_USERNAME:}
-  pin: ${GYM_PIN:}
+  username: ${USERNAME}
+  pin: ${PIN}
   url:
-    member: ${GYM_MEMBER_API_URL}
+    member: ${GYM_MEMBER_API_URL:https://www.google.com}
     api: ${GYM_API_URL}
-    login: ${LOGIN_API_URL}
+    login: ${LOGIN_URL}
 
 cron:
   hourly: 0 0/10 * * * ?
@@ -22,3 +22,5 @@ app:
     port: ${SERVER_PORT:8080}
   service:
     url: http://${app.server.name}:${app.server.port}/
+
+file.path: ./file.csv

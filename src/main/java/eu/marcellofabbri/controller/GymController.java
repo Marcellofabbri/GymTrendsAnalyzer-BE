@@ -8,7 +8,15 @@ import eu.marcellofabbri.service.LoginService;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.reactivex.Flowable;
+import reactor.core.publisher.Mono;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
+
+import static io.micronaut.http.MediaType.TEXT_CSV;
 
 @Controller("/")
 public class GymController {
@@ -29,5 +37,18 @@ public class GymController {
     Map response = mapper.readValue(tokenResponse, Map.class);
     String token = "Bearer " + response.get("access_token");
     return dataRetrieveService.fetchDatapoint(token);
+  }
+
+  @Get(value = "/download", produces = TEXT_CSV)
+  public Flowable<String> download() throws IOException {
+    return Flowable.just(readString());
+  }
+
+  private String readString() {
+    try {
+      return Files.readString(Path.of("./file.csv"));
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 }
